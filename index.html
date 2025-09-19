@@ -1,270 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Nivetha | Web Developer Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nivetha | Portfolio</title>
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
-<!-- AOS Animations -->
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- FontAwesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- AOS (Animate On Scroll) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
 
-<style>
-/* ===== Reset & Base ===== */
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
-body{font-family:'Poppins',sans-serif;background:#fafafa;color:#444;line-height:1.6;overflow-x:hidden;}
-img, pre{max-width:100%;}
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0d0d0d;
+      color: #f5f5f5;
+      overflow-x: hidden;
+    }
 
-/* ===== Header & Navbar ===== */
-header{position:fixed;top:15px;left:20px;z-index:2000;}
-header .logo{font-family:'Dancing Script',cursive;font-size:2rem;font-weight:700;color:#d86ba5;}
+    /* Particle Background */
+    #particles-js {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      background: #0d0d0d;
+    }
 
-nav{position:fixed;top:15px;right:20px;z-index:2000;display:flex;align-items:center;}
-.menu-toggle{width:42px;height:28px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;position:relative;z-index:2200;padding:6px;}
-.menu-toggle span{display:block;height:4px;background:#d86ba5;border-radius:2px;transition:all .4s ease;}
-.menu-toggle.active span:first-child{transform:rotate(45deg) translate(5px,5px);}
-.menu-toggle.active span:last-child{transform:rotate(-45deg) translate(5px,-5px);}
-.menu{position:fixed;top:0;right:-260px;width:260px;height:100%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:right .45s ease;z-index:2100;border-left:1px solid #d86ba5;padding:20px 12px;}
-.menu.open{right:0;}
-.menu a{color:#444;font-weight:700;font-size:1rem;transition:color .25s;}
-.menu a:hover{color:#d86ba5;}
+    /* Header */
+    header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      background: rgba(15, 15, 15, 0.9);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #222;
+      z-index: 1000;
+    }
+    header h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      color: #a29bfe;
+    }
+    nav a {
+      margin-left: 20px;
+      color: #f5f5f5;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    nav a:hover {
+      color: #55efc4;
+      text-shadow: 0 0 10px #55efc4;
+    }
 
-/* ===== Hero Section ===== */
-#hero{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  text-align:center;
-  background: linear-gradient(270deg,#ffe6e6,#ffe8f0,#fceeff,#e7eaff,#e2f6ff);
-  background-size:1200% 1200%;
-  animation: gradientBG 15s ease infinite;
-}
+    /* Hero */
+    #hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+    #hero h1 {
+      font-size: 3rem;
+      font-family: 'Dancing Script', cursive;
+      margin-bottom: 10px;
+      text-shadow: 0 0 20px #a29bfe;
+    }
+    #hero p {
+      font-size: 1.2rem;
+      color: #ddd;
+      margin-bottom: 20px;
+    }
 
-@keyframes gradientBG {
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
+    section {
+      padding: 100px 20px;
+    }
+    section h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.4rem;
+      color: #ffeaa7;
+      text-shadow: 0 0 10px #a29bfe;
+    }
 
-#hero h1{
-  font-family:'Dancing Script', cursive;
-  font-size:4rem;
-  font-weight:700;
-  background: linear-gradient(270deg,#ffb6c1,#f8c8dc,#e6b3ff,#b3d9ff,#b3ffd9);
-  background-size:1200% 1200%;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation: textGradient 8s ease infinite;
-}
+    /* About */
+    #about {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+      line-height: 1.8;
+    }
 
-@keyframes textGradient{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
+    /* Skills */
+    #skills .skills-wrap {
+      max-width: 900px;
+      margin: auto;
+    }
+    .skill {
+      margin: 20px 0;
+    }
+    .skill p {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .bar {
+      height: 14px;
+      background: #222;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .bar span {
+      display: block;
+      height: 100%;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #55efc4, #a29bfe);
+      width: 0;
+      animation: grow 2s forwards;
+    }
+    @keyframes grow {
+      from { width: 0; }
+    }
 
-#hero .typing{color:#555;font-size:1.5rem;margin-top:15px;min-height:28px;}
+    /* Projects */
+    #projects .projects-wrap {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .project-box {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid #2c2c2c;
+      transition: transform 0.3s;
+    }
+    .project-box:hover {
+      transform: rotateY(8deg) scale(1.03);
+      border-color: #55efc4;
+      box-shadow: 0 0 20px #55efc4;
+    }
 
-/* ===== Sections ===== */
-section{padding:80px 20px;min-height:100vh;}
-section h2{font-family:'Dancing Script',cursive;background:linear-gradient(90deg,#ffb6c1,#f8c8dc,#e6b3ff,#b3d9ff,#b3ffd9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;font-size:2.5rem;margin-bottom:20px;}
-section p{max-width:700px;margin:15px auto;font-size:1rem;color:#666;line-height:1.6;text-align:center;}
+    /* Certificates */
+    #certificates {
+      text-align: center;
+    }
+    .certificate-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px;
+      background: rgba(26, 26, 26, 0.7);
+      border-radius: 12px;
+      border: 1px solid #2c2c2c;
+      box-shadow: 0 0 25px rgba(85, 239, 196, 0.3);
+    }
+    .certificate-title {
+      font-size: 1.8rem;
+      color: #55efc4;
+      margin-bottom: 25px;
+      text-shadow: 0 0 10px #55efc4;
+    }
+    .certificate-content {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(85, 239, 196, 0.3);
+    }
+    .certificate-heading {
+      font-size: 1.5rem;
+      color: #ffeaa7;
+      margin-bottom: 15px;
+    }
+    .certificate-name {
+      font-size: 1.8rem;
+      color: #a29bfe;
+      margin: 15px 0;
+      font-weight: bold;
+    }
+    .certificate-achievement {
+      font-size: 1.4rem;
+      color: #55efc4;
+      margin: 20px 0;
+      font-weight: bold;
+    }
+    .certificate-details {
+      margin-top: 20px;
+      color: #ddd;
+      font-size: 0.9rem;
+    }
+    .certificate-verify {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 8px 15px;
+      background: linear-gradient(90deg, #55efc4, #a29bfe);
+      color: #0d0d0d;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    .certificate-verify:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(85, 239, 196, 0.4);
+    }
+    .certificate-image {
+      max-width: 100%;
+      border-radius: 12px;
+      margin-top: 25px;
+      opacity: 0.9;
+      transition: all 0.5s ease;
+      box-shadow: 0 0 25px rgba(85, 239, 196, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .certificate-image:hover {
+      opacity: 1;
+      transform: scale(1.02);
+      box-shadow: 0 0 30px rgba(85, 239, 196, 0.6);
+    }
 
-/* ===== About Section ===== */
-#about .container{display:grid;grid-template-columns:1fr;gap:40px;align-items:center;max-width:1200px;margin:0 auto;}
-@media(min-width:768px){#about .container{grid-template-columns:1fr 1fr;}}
-#about h1{font-size:2rem;color:#444;}
-#about p span{background:linear-gradient(90deg,#ffb6c1,#f8c8dc,#e6b3ff,#b3d9ff,#b3ffd9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:600;display:block;}
+    /* Contact */
+    #contact {
+      text-align: center;
+    }
+    .social-links a {
+      margin: 0 10px;
+      font-size: 1.6rem;
+      color: #f5f5f5;
+      transition: 0.3s;
+    }
+    .social-links a:hover {
+      color: #55efc4;
+      text-shadow: 0 0 10px #55efc4;
+    }
 
-/* Code Box */
-.code-box{background:#fff;border-radius:12px;padding:20px;color:#444;font-family:monospace;box-shadow:0 0 15px rgba(216,107,165,0.3);border:1px solid #f3c1e0;transition:all 0.3s;}
-.code-box:hover{transform:translateY(-8px);box-shadow:0 0 25px rgba(216,107,165,0.5);}
-.code-header{display:flex;gap:8px;margin-bottom:10px;}
-.code-header span{width:12px;height:12px;border-radius:50%;display:inline-block;}
-.red{background:#e57373}.yellow{background:#fbc02d}.green{background:#81c784;}
-.code-box pre{margin:0;font-size:0.85rem;overflow-x:auto;white-space:pre-wrap;word-break:break-word;}
+    /* Footer */
+    footer {
+      background: #1a1a1a;
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #222;
+      color: #aaa;
+    }
 
-/* ===== Skills Section ===== */
-.skills-wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:30px;max-width:900px;margin:0 auto;}
-@media(min-width:768px){.skills-wrap{grid-template-columns:repeat(3,1fr);}}
-.skill-box{display:flex;flex-direction:column;align-items:center;}
-.skill-box i{font-size:3rem;width:100px;height:100px;background:#fff;display:flex;align-items:center;justify-content:center;border-radius:50%;box-shadow:0 0 15px rgba(216,107,165,0.3);transition:transform 0.3s,box-shadow 0.3s;}
-.skill-box i:hover{transform:scale(1.15);box-shadow:0 0 25px rgba(216,107,165,0.5);}
-.skill-box .html-icon{border:3px solid #E44D26;color:#E44D26;}
-.skill-box .css-icon{border:3px solid #264DE4;color:#264DE4;}
-.skill-box .js-icon{border:3px solid #F7DF1E;color:#F7DF1E;}
-.skill-box .php-icon{border:3px solid #777BB4;color:#777BB4;}
-.skill-box .mysql-icon{border:3px solid #00758F;color:#00758F;}
-
-/* ===== Projects Section ===== */
-.projects-wrap{display:flex;flex-direction:column;gap:25px;max-width:900px;margin:0 auto;}
-.proj-box{background:#fff;border-radius:14px;padding:25px;color:#444;box-shadow:0 0 15px rgba(216,107,165,0.3);transition:all 0.3s;border:1px solid #f3c1e0;}
-.proj-box:hover{transform:translateY(-10px);box-shadow:0 0 25px rgba(216,107,165,0.5);}
-.proj-header{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
-.dots{display:flex;gap:6px;}
-.dots span{width:10px;height:10px;border-radius:50%;display:inline-block;}
-.d1{background:#e57373;} .d2{background:#fbc02d;} .d3{background:#81c784;}
-.proj-box h3{color:#d86ba5;margin:0;font-weight:600;font-size:1.25rem;}
-.proj-box pre{margin:0;font-size:0.9rem;white-space:pre-wrap;line-height:1.5;word-break:break-word;}
-
-/* ===== Contact Section ===== */
-#contact-section{text-align:center;background:#fff;padding:60px 20px;}
-#contact-section .contact-subtitle{background:linear-gradient(90deg,#ffb6c1,#f8c8dc,#e6b3ff,#b3d9ff,#b3ffd9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:1.5rem;margin-bottom:20px;}
-#contact-section .social{display:flex;justify-content:center;gap:25px;font-size:2rem;}
-#contact-section .social a{color:#444;transition:transform .3s;}
-#contact-section .social a:hover{transform:scale(1.3);}
-#contact-section .social a.whatsapp:hover{color:#25D366;}
-#contact-section .social a.linkedin:hover{color:#0077b5;}
-#contact-section .social a.instagram:hover{color:#E1306C;}
-</style>
+    /* Scroll To Top */
+    #topBtn {
+      position: fixed;
+      bottom: 20px; right: 20px;
+      background: #55efc4;
+      border: none;
+      padding: 12px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      display: none;
+      box-shadow: 0 0 10px #55efc4;
+    }
+    #topBtn:hover {
+      background: #a29bfe;
+      color: #fff;
+      box-shadow: 0 0 20px #a29bfe;
+    }
+  </style>
 </head>
 <body>
+  <div id="particles-js"></div>
 
-<!-- Header & Nav -->
-<header><div class="logo">Nivetha</div></header>
-<nav>
-  <div class="menu-toggle" id="menu-toggle" role="button" aria-label="Toggle menu" aria-expanded="false" tabindex="0"><span></span><span></span></div>
-  <div class="menu" id="menu">
-    <a href="#about" onclick="closeMenu()">About</a>
-    <a href="#skills" onclick="closeMenu()">Skills</a>
-    <a href="#projects" onclick="closeMenu()">Projects</a>
-    <a href="#contact-section" onclick="closeMenu()">Contact</a>
-  </div>
-</nav>
+  <header>
+    <h1>Nivetha</h1>
+    <nav>
+      <a href="#hero">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-<!-- Hero Section -->
-<section id="hero">
-  <h1>Nivetha</h1>
-  <div class="typing" id="typing"></div>
-</section>
+  <!-- Hero -->
+  <section id="hero">
+    <h1>Hello, I'm Nivetha</h1>
+    <p>A passionate Web Developer skilled in HTML, CSS, JavaScript & PHP</p>
+  </section>
 
-<!-- About Section -->
-<section id="about">
-  <div class="container">
-    <div data-aos="fade-right">
-      <h1>About Me</h1>
-      <p>
-        <span>I am a Web Developer passionate about building beautiful and useful applications.</span>
-        <span>I have experience in HTML, CSS, JavaScript, PHP, and MySQL.</span>
-        <span>I enjoy learning new technologies and solving real-world problems.</span>
-      </p>
+  <!-- About -->
+  <section id="about" data-aos="fade-up">
+    <h2>About Me</h2>
+    <p>
+      I'm Nivetha, a creative and detail-oriented web developer. I love building interactive, user-friendly websites with clean code and modern designs. My expertise lies in front-end technologies like HTML, CSS, JavaScript, and also back-end with PHP. I'm always eager to learn and take on new challenges.
+    </p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" data-aos="fade-up">
+    <h2>Skills</h2>
+    <div class="skills-wrap">
+      <div class="skill"><p>HTML</p><div class="bar"><span style="width:90%"></span></div></div>
+      <div class="skill"><p>CSS</p><div class="bar"><span style="width:85%"></span></div></div>
+      <div class="skill"><p>JavaScript</p><div class="bar"><span style="width:95%"></span></div></div>
+      <div class="skill"><p>PHP</p><div class="bar"><span style="width:95%"></span></div></div>
+      <div class="skill"><p>Java</p><div class="bar"><span style="width:95%"></span></div></div>
     </div>
-    <div data-aos="fade-left">
-      <div class="code-box">
-        <div class="code-header"><span class="red"></span><span class="yellow"></span><span class="green"></span></div>
-<pre>
-const developer = {
-  name: 'Nivetha',
-  skills: ['HTML','CSS','JavaScript','PHP','MySQL'],
-  hardWorker: true,
-  quickLearner: true,
-  hireable: function(){ return this.hardWorker && this.quickLearner; }
-};
-</pre>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" data-aos="fade-up">
+    <h2>Projects</h2>
+    <div class="projects-wrap">
+      <div class="project-box">
+        <h3>Pending Fees Management</h3>
+        <p>A web project to track and manage student pending fees using PHP & MySQL.</p>
+      </div>
+      <div class="project-box">
+        <h3>Admission Reference System</h3>
+        <p>An online admission reference system built with HTML, CSS, JS, and PHP.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Skills Section -->
-<section id="skills">
-  <h2>My Skills</h2>
-  <div class="skills-wrap">
-    <div class="skill-box" data-aos="fade-right"><i class="fab fa-html5 html-icon"></i></div>
-    <div class="skill-box" data-aos="fade-left"><i class="fab fa-css3-alt css-icon"></i></div>
-    <div class="skill-box" data-aos="fade-up"><i class="fab fa-js js-icon"></i></div>
-    <div class="skill-box" data-aos="fade-right"><i class="fab fa-php php-icon"></i></div>
-    <div class="skill-box" data-aos="fade-left"><i class="fas fa-database mysql-icon"></i></div>
-  </div>
-</section>
-
-<!-- Projects Section -->
-<section id="projects">
-  <h2>Projects</h2>
-  <div class="projects-wrap">
-    <div class="proj-box" data-aos="fade-up">
-      <div class="proj-header">
-        <div class="dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
-        <h3>Pending Fees Tracker</h3>
+  <!-- Certificates -->
+  <section id="certificates" data-aos="fade-up">
+    <h2>Certificates</h2>
+    <div class="certificate-container">
+      <h3 class="certificate-title">Web Development Fundamentals - IBM SkillsBuild</h3>
+      
+      <div class="certificate-content">
+        <div class="certificate-heading">In recognition of the commitment to achieve professional excellence</div>
+        <div class="certificate-name">Nivi Nivetha</div>
+        <div>Has successfully satisfied the requirements for:</div>
+        <div class="certificate-achievement">Web Development Fundamentals</div>
+        <div class="certificate-details">
+          Issued on: Aug 23, 2025<br>
+          Issued by: IBM SkillsBuild
+        </div>
+        <a href="https://www.credly.com/badges/3e601b36-96d8-4942-a84a-321c569cb777" target="_blank" class="certificate-verify">Verify Certificate</a>
       </div>
-<pre>
-const project = {
-  name: 'Pending Fees Tracker',
-  tools: ['HTML','CSS','JS','PHP','MySQL'],
-  role: 'Web Developer',
-  description: 'A system to track pending fees and manage student administration efficiently.'
-};
-</pre>
+      
+      <!-- <img src="C:\Users\DNA14\OneDrive\Pictures\Screenshots\Nivetha.V.png" alt="Web Development Fundamentals Certificate" class="certificate-image"> -->
     </div>
-    <div class="proj-box" data-aos="fade-up">
-      <div class="proj-header">
-        <div class="dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span></div>
-        <h3>Admin Reference System</h3>
-      </div>
-<pre>
-const project = {
-  name: 'Admin Reference System',
-  tools: ['HTML','CSS','JS','PHP','MySQL'],
-  role: 'Web Developer',
-  description: 'A system to maintain references, notes, and student records efficiently for administration.'
-};
-</pre>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" data-aos="fade-up">
+    <h2>Contact</h2>
+    <p>Email: nivinivetha1412@gmail.com</p>
+    <p>Phone: 9994996834</p>
+    <div class="social-links">
+      <a href="https://wa.me/919994996834" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://instagram.com/your_instagram_username" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="mailto:nivinivetha1412@gmail.com"><i class="fas fa-envelope"></i></a>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Contact Section -->
-<section id="contact-section">
-  <h2>Contact Me</h2>
-  <p class="contact-subtitle">Let's Work Together</p>
-  <div class="social">
-    <a href="https://wa.me/919994996834" class="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://linkedin.com" class="linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://instagram.com" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-  </div>
-</section>
+  <footer>
+    <p>© 2025 Nivetha | All Rights Reserved</p>
+  </footer>
 
-<!-- Scripts -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-AOS.init({duration:1000, once:true});
+  <button id="topBtn"><i class="fas fa-arrow-up"></i></button>
 
-// Menu toggle
-const menuToggle = document.getElementById('menu-toggle');
-const menu = document.getElementById('menu');
-function openMenu(){menuToggle.classList.add('active');menu.classList.add('open');menuToggle.setAttribute('aria-expanded','true');}
-function closeMenu(){menuToggle.classList.remove('active');menu.classList.remove('open');menuToggle.setAttribute('aria-expanded','false');}
-menuToggle.addEventListener('click',()=>{menu.classList.contains('open')?closeMenu():openMenu();});
-document.addEventListener('click',(e)=>{if(menu.classList.contains('open')&&!menu.contains(e.target)&&!menuToggle.contains(e.target)){closeMenu();}});
-document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&menu.classList.contains('open'))closeMenu();});
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    /* ParticlesJS */
+    particlesJS.load('particles-js', 'https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js/demo/particles.json');
 
-// Typing effect
-const typing = document.getElementById('typing');
-const texts = ['Web Developer','Full Stack Enthusiast','Problem Solver','Tech Learner'];
-let index=0, charIndex=0, isDeleting=false;
+    /* Scroll to top */
+    const topBtn = document.getElementById("topBtn");
+    window.onscroll = function() {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        topBtn.style.display = "block";
+      } else {
+        topBtn.style.display = "none";
+      }
+    };
+    topBtn.onclick = () => window.scrollTo({top:0,behavior:"smooth"});
 
-function type(){
-  const current = texts[index];
-  if(!isDeleting){
-    typing.textContent = current.substring(0,charIndex+1);
-    charIndex++;
-    if(charIndex===current.length){isDeleting=true;setTimeout(type,1000);return;}
-  } else {
-    typing.textContent = current.substring(0,charIndex-1);
-    charIndex--;
-    if(charIndex===0){isDeleting=false;index=(index+1)%texts.length;}
-  }
-  setTimeout(type,isDeleting?100:200);
-}
-type();
-</script>
-
+    /* AOS */
+    AOS.init({ duration: 1000, once: true });
+  </script>
 </body>
 </html>
