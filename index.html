@@ -11,9 +11,6 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- AOS (Animate On Scroll) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
-
   <style>
     * {
       margin: 0; padding: 0;
@@ -217,6 +214,8 @@
       border-radius: 30px;
       font-weight: bold;
       transition: all 0.3s;
+      cursor: pointer;
+      border: none;
     }
     .certificate-verify:hover {
       transform: translateY(-3px);
@@ -279,6 +278,153 @@
       color: #fff;
       box-shadow: 0 0 20px #a29bfe;
     }
+
+    /* Certificate Modal */
+    .certificate-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      z-index: 2000;
+      overflow: auto;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .modal-content {
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 900px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      border: 2px solid #55efc4;
+      box-shadow: 0 0 30px rgba(85, 239, 196, 0.5);
+    }
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: #f5f5f5;
+      font-size: 28px;
+      cursor: pointer;
+      transition: color 0.3s;
+      z-index: 2001;
+    }
+    .close-modal:hover {
+      color: #55efc4;
+    }
+    .certificate-img {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Upload Section */
+    .upload-section {
+      background: rgba(26, 26, 26, 0.7);
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+      border: 1px dashed #55efc4;
+    }
+    .upload-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: linear-gradient(90deg, #a29bfe, #55efc4);
+      color: #0d0d0d;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+      transition: all 0.3s;
+    }
+    .upload-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(85, 239, 196, 0.4);
+    }
+    #fileInput {
+      display: none;
+    }
+    
+    /* Loading spinner */
+    .spinner {
+      border: 5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top: 5px solid #55efc4;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Error message */
+    .error-message {
+      color: #ff7675;
+      margin: 20px 0;
+      padding: 10px;
+      background: rgba(255, 118, 117, 0.1);
+      border-radius: 5px;
+      border: 1px solid #ff7675;
+    }
+    
+    /* Instructions */
+    .instructions {
+      background: rgba(85, 239, 196, 0.1);
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+      border-left: 4px solid #55efc4;
+    }
+    
+    /* Status indicators */
+    .status-indicator {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+    .status-saved {
+      background-color: #55efc4;
+    }
+    .status-not-saved {
+      background-color: #ff7675;
+    }
+    
+    /* Management buttons */
+    .management-buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    .management-btn {
+      padding: 8px 15px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+    }
+    .remove-btn {
+      background: linear-gradient(90deg, #ff7675, #e17055);
+      color: white;
+    }
+    .remove-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 118, 117, 0.4);
+    }
   </style>
 </head>
 <body>
@@ -303,7 +449,7 @@
   </section>
 
   <!-- About -->
-  <section id="about" data-aos="fade-up">
+  <section id="about">
     <h2>About Me</h2>
     <p>
       I'm Nivetha, a creative and detail-oriented web developer. I love building interactive, user-friendly websites with clean code and modern designs. My expertise lies in front-end technologies like HTML, CSS, JavaScript, and also back-end with PHP. I'm always eager to learn and take on new challenges.
@@ -311,7 +457,7 @@
   </section>
 
   <!-- Skills -->
-  <section id="skills" data-aos="fade-up">
+  <section id="skills">
     <h2>Skills</h2>
     <div class="skills-wrap">
       <div class="skill"><p>HTML</p><div class="bar"><span style="width:90%"></span></div></div>
@@ -323,7 +469,7 @@
   </section>
 
   <!-- Projects -->
-  <section id="projects" data-aos="fade-up">
+  <section id="projects">
     <h2>Projects</h2>
     <div class="projects-wrap">
       <div class="project-box">
@@ -338,7 +484,7 @@
   </section>
 
   <!-- Certificates -->
-  <section id="certificates" data-aos="fade-up">
+  <section id="certificates">
     <h2>Certificates</h2>
     <div class="certificate-container">
       <h3 class="certificate-title">Web Development Fundamentals - IBM SkillsBuild</h3>
@@ -352,15 +498,45 @@
           Issued on: Aug 23, 2025<br>
           Issued by: IBM SkillsBuild
         </div>
-        <a href="https://www.credly.com/badges/3e601b36-96d8-4942-a84a-321c569cb777" target="_blank" class="certificate-verify">Verify Certificate</a>
+        
+        <div id="uploadSection" class="upload-section">
+          <p id="certificateStatus">
+            <span class="status-indicator" id="statusIndicator"></span>
+            <span id="statusText">Certificate not uploaded yet</span>
+          </p>
+          <label for="fileInput" class="upload-btn">
+            <i class="fas fa-upload"></i> Upload Certificate Image
+          </label>
+          <input type="file" id="fileInput" accept="image/*">
+          <p id="fileName" style="margin-top: 10px; color: #55efc4;"></p>
+        </div>
+        
+        <div class="management-buttons">
+          <button id="viewCertificateBtn" class="certificate-verify" disabled>View Certificate</button>
+          <button id="removeCertificateBtn" class="management-btn remove-btn" disabled>Remove Certificate</button>
+        </div>
       </div>
-      
-      <!-- <img src="C:\Users\DNA14\OneDrive\Pictures\Screenshots\Nivetha.V.png" alt="Web Development Fundamentals Certificate" class="certificate-image"> -->
     </div>
   </section>
 
+  <!-- Certificate Modal -->
+  <div id="certificateModal" class="certificate-modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2 style="color: #55efc4; margin-bottom: 20px;">Web Development Fundamentals Certificate</h2>
+      
+      <div id="imageContainer">
+        <p style="color: #ddd;">Your certificate will appear here</p>
+      </div>
+      
+      <div style="margin-top: 25px;">
+        <button id="downloadCertificate" class="certificate-verify" disabled>Download Certificate</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Contact -->
-  <section id="contact" data-aos="fade-up">
+  <section id="contact">
     <h2>Contact</h2>
     <p>Email: nivinivetha1412@gmail.com</p>
     <p>Phone: 9994996834</p>
@@ -379,8 +555,10 @@
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
+    // Key for localStorage
+    const CERTIFICATE_STORAGE_KEY = 'nivetha_certificate_image';
+    
     /* ParticlesJS */
     particlesJS.load('particles-js', 'https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js/demo/particles.json');
 
@@ -395,8 +573,151 @@
     };
     topBtn.onclick = () => window.scrollTo({top:0,behavior:"smooth"});
 
-    /* AOS */
-    AOS.init({ duration: 1000, once: true });
+    /* Certificate Management */
+    const modal = document.getElementById("certificateModal");
+    const viewBtn = document.getElementById("viewCertificateBtn");
+    const removeBtn = document.getElementById("removeCertificateBtn");
+    const closeBtn = document.querySelector(".close-modal");
+    const imageContainer = document.getElementById("imageContainer");
+    const downloadBtn = document.getElementById("downloadCertificate");
+    const fileInput = document.getElementById("fileInput");
+    const fileName = document.getElementById("fileName");
+    const statusIndicator = document.getElementById("statusIndicator");
+    const statusText = document.getElementById("statusText");
+    const uploadSection = document.getElementById("uploadSection");
+    
+    let certificateImage = null;
+
+    // Check if certificate is already saved
+    function checkSavedCertificate() {
+      const savedImage = localStorage.getItem(CERTIFICATE_STORAGE_KEY);
+      if (savedImage) {
+        certificateImage = savedImage;
+        statusIndicator.className = 'status-indicator status-saved';
+        statusText.textContent = 'Certificate saved in browser';
+        viewBtn.disabled = false;
+        removeBtn.disabled = false;
+        uploadSection.style.display = 'none';
+        return true;
+      } else {
+        statusIndicator.className = 'status-indicator status-not-saved';
+        statusText.textContent = 'Certificate not uploaded yet';
+        viewBtn.disabled = true;
+        removeBtn.disabled = true;
+        uploadSection.style.display = 'block';
+        return false;
+      }
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      checkSavedCertificate();
+    });
+
+    // File upload handling
+    fileInput.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        fileName.textContent = `Selected: ${file.name}`;
+        
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          // Save to localStorage
+          localStorage.setItem(CERTIFICATE_STORAGE_KEY, event.target.result);
+          certificateImage = event.target.result;
+          
+          // Update UI
+          statusIndicator.className = 'status-indicator status-saved';
+          statusText.textContent = 'Certificate saved in browser';
+          viewBtn.disabled = false;
+          removeBtn.disabled = false;
+          uploadSection.style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // View certificate
+    viewBtn.onclick = function() {
+      if (!certificateImage) return;
+      
+      // Clear previous content
+      imageContainer.innerHTML = '';
+      
+      // Create and load the image
+      const img = new Image();
+      img.onload = function() {
+        img.className = 'certificate-img';
+        imageContainer.appendChild(img);
+        downloadBtn.disabled = false;
+      };
+      
+      img.onerror = function() {
+        imageContainer.innerHTML = `
+          <div class="error-message">
+            <p>Error: Could not load certificate image.</p>
+          </div>
+        `;
+        downloadBtn.disabled = true;
+      };
+      
+      // Set the image source to the saved image
+      img.src = certificateImage;
+      
+      // Show modal
+      modal.style.display = "flex";
+      document.body.style.overflow = "hidden";
+    }
+
+    // Remove certificate
+    removeBtn.onclick = function() {
+      if (confirm("Are you sure you want to remove the certificate?")) {
+        localStorage.removeItem(CERTIFICATE_STORAGE_KEY);
+        certificateImage = null;
+        checkSavedCertificate();
+        fileName.textContent = '';
+      }
+    }
+
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+    }
+
+    // Download certificate functionality
+    downloadBtn.onclick = function() {
+      if (!certificateImage) return;
+      
+      const img = document.querySelector('.certificate-img');
+      if (img) {
+        const link = document.createElement('a');
+        link.href = img.src;
+        link.download = 'Nivetha-Web-Development-Certificate.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    }
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        window.scrollTo({
+          top: targetSection.offsetTop,
+          behavior: 'smooth'
+        });
+      });
+    });
   </script>
 </body>
 </html>
